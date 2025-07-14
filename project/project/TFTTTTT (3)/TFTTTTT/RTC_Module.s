@@ -1,0 +1,39 @@
+	AREA MYDATA, DATA, READWRITE
+GPIOB_BASE 
+GPIOB_ODR
+GPIOB_IDR
+GPIOB_CRL
+GPIOB_CRH
+
+
+SDA_PIN EQU 0
+SCL_PIN EQU 1
+SQW_PIN EQU 10
+
+	AREA	MYCODE, CODE, READONLY
+	INCLUDE Setup.s	
+	
+		
+	EXPORT RTC_Main
+;ENTRY
+	
+RTC_Main FUNCTION
+	BL RTC_SETUP
+	
+	
+	
+	
+	ENDFUNC
+	
+	
+RTC_SETUP FUNCTION
+	PUSH {R0-R12, LR}
+	 ; Enable GPIOB clock
+    LDR R0, =RCC_APB2ENR     ; RCC_APB2ENR address
+    LDR R1, [R0]             ; Read current value
+    ORR R1, R1, #0x00000002  ; Enable GPIOB clock (bit 1)
+    STR R1, [R0]             ; Write back to RCC_APB2ENR
+	POP{R0-R12, PC}
+	ENDFUNC
+	
+	END

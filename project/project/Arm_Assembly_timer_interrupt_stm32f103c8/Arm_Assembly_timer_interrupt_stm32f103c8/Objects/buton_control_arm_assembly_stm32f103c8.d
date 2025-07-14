@@ -1,0 +1,1 @@
+.\objects\buton_control_arm_assembly_stm32f103c8.o: Objects\buton_control_Arm_Assembly_Stm32f103c8.sct

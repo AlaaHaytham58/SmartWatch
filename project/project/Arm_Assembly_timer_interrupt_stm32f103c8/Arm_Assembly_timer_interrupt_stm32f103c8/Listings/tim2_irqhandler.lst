@@ -1,0 +1,93 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000 4001080C 
+                       GPIOA_ODR
+                               EQU              0x4001080C
+    2 00000000         
+    3 00000000                 AREA             tim2_IRQHandler, READONLY, CODE
+    4 00000000                 THUMB
+    5 00000000                 EXPORT           TIM2_IRQHandler
+    6 00000000                 EXTERN           _main
+    7 00000000         
+    8 00000000         TIM2_IRQHandler
+                               PROC
+    9 00000000         ;                 TIM2->SR =0x0;//interrupt FLAG ON
+   10 00000000 2000            MOVS             r0,#0x00
+   11 00000002 F04F 4180       MOV              r1,#0x40000000
+   12 00000006 6108            STR              r0,[r1,#0x10]
+   13 00000008         ;                 GPIOA->ODR ^=0x0008;//toggle pa3 
+   14 00000008 4803            LDR              r0,=GPIOA_ODR
+   15 0000000A 6800            LDR              r0,[r0,#0x00]
+   16 0000000C F080 0008       EOR              r0,r0,#0x08
+   17 00000010 4901            LDR              r1,=GPIOA_ODR
+   18 00000012 6008            STR              r0,[r1,#0x00]
+   19 00000014         
+   20 00000014 4770            BX               lr
+   21 00000016                 ENDP
+   22 00000016 00 00           ALIGN
+   23 00000018                 END
+              4001080C 
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M3 --depend=.\ob
+jects\tim2_irqhandler.d -o.\objects\tim2_irqhandler.o -I.\RTE\_Target_1 -IC:\Us
+ers\doguk\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include -IC:\
+Keil_v5\ARM\CMSIS\Include --predefine="__UVISION_VERSION SETA 529" --predefine=
+"STM32F10X_MD SETA 1" --list=.\listings\tim2_irqhandler.lst TIM2_IRQHandler.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+TIM2_IRQHandler 00000000
+
+Symbol: TIM2_IRQHandler
+   Definitions
+      At line 8 in file TIM2_IRQHandler.s
+   Uses
+      At line 5 in file TIM2_IRQHandler.s
+Comment: TIM2_IRQHandler used once
+tim2_IRQHandler 00000000
+
+Symbol: tim2_IRQHandler
+   Definitions
+      At line 3 in file TIM2_IRQHandler.s
+   Uses
+      None
+Comment: tim2_IRQHandler unused
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Absolute symbols
+
+GPIOA_ODR 4001080C
+
+Symbol: GPIOA_ODR
+   Definitions
+      At line 1 in file TIM2_IRQHandler.s
+   Uses
+      At line 14 in file TIM2_IRQHandler.s
+      At line 17 in file TIM2_IRQHandler.s
+
+1 symbol
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+External symbols
+
+_main 00000000
+
+Symbol: _main
+   Definitions
+      At line 6 in file TIM2_IRQHandler.s
+   Uses
+      None
+Comment: _main unused
+1 symbol
+338 symbols in table
