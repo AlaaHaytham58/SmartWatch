@@ -1,8 +1,0 @@
---cpu Cortex-M3
-".\objects\dosya1.o"
-".\objects\dosya2.o"
-".\objects\tim2_irqhandler.o"
---strict --scatter ".\Objects\Blink_Arm_Assembly_Stm32f103c8.sct"
---summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
---info sizes --info totals --info unused --info veneers
---list ".\Listings\Blink_Arm_Assembly_Stm32f103c8.map" -o .\Objects\Blink_Arm_Assembly_Stm32f103c8.axf
